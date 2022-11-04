@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>
+			{% block title %}
+				Twig
+			{% endblock %}
+		</title>
+	</head>
+	<body>
+
+		{% block navbar%}
+			<nav>
+				<ul>
+					<li><a href="/products.php">Products</a></li>
+				</ul>
+			</nav>
+		{% endblock %}
+
+		{% block content %}{% endblock%}
+
+        {% extends "productsLayout.html.twig" %}
+{% block title %}
+	{{ parent() }}
+	- Products
+{% endblock %}
+
+{% block content %}
+<ul>
+    {% for product in products %}
+       <li>{{product}}</li>
+    {% endfor %}
+
+    {{dump(products)}}
+</ul>
+
+{% endblock %}
+
+	</body>
+</html>
